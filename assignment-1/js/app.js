@@ -1,8 +1,8 @@
 (function() {
   'use strict';
 
-  angular.module('assignment1App', [])
-  .controller('assignment1Controller', function($scope) {
+  angular.module('LunchCheck', [])
+  .controller('LunchCheckController', function($scope) {
     $scope.calculateIfTooMuch = function() {
       if ($scope.lunchItems == undefined) {
         $scope.message = "Please enter data first";
