@@ -3,58 +3,65 @@
 
     angular.module('NarrowItDownApp', [])
         .controller('NarrowItDownController', NarrowItDownController)
-        .service('MenuSearchService', MenuSearchService);
+        .service('MenuSearchService', MenuSearchService)
+        .directive('foundItems', foundItemsDirective);
 
     NarrowItDownController.$inject = ['MenuSearchService'];
     function NarrowItDownController(MenuSearchService) {
-        var alreadyBoughtItems = this;
-        alreadyBoughtItems.items = ShoppingListCheckOffService.getBoughtList();
+        var narrowItDown = this;
+
+        narrowItDown.searchItems = function(itemToSearch) {
+            var promise = MenuSearchService.getMenuItems();
+            promise.then(function (response) {
+                console.log(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        };
+
+        narrowItDown.removeItem = function (itemIndex) {
+            var promise = MenuSearchService.getMenuItems();
+            shoppingList.removeItem(itemIndex);
+            this.title = origTitle + " (" + list.items.length + " items )";
+        };
+
     }
 
-    function MenuSearchService() {
+    NarrowItDownController.$inject = ['$http'];
+    function MenuSearchService($http) {
 
         var service = this;
+        var menuItemsURL = "https://davids-restaurant.herokuapp.com/menu_items.json";
 
-        var boughtList = [];
-        var toBuyList = [];
-        var toBuyItems = [
-            {
-                name: "Milk",
-                quantity: "2"
-            },
-            {
-                name: "Donuts",
-                quantity: "200"
-            },
-            {
-                name: "Cookies",
-                quantity: "300"
-            },
-            {
-                name: "Chocolate",
-                quantity: "5"
-            },
-            {
-                name: "Carrots",
-                quantity: "25"
-            }
-        ];
-        service.initializeToBuyList = function () {
-            toBuyList = toBuyItems;
-            return toBuyList;
+        service.getMenuItems = function () {
+            var response = $http({
+                method: "GET",
+                url: (menuItemsURL)
+            });
+
+            return response;
         };
-        service.getToBuyList = function () {
-            return toBuyList;
-        };
-        service.getBoughtList = function () {
-            return boughtList;
-        };
-        service.removeFromList = function (boughtItem) {
-            var theItem = toBuyList[boughtItem];
-            toBuyList.splice(boughtItem, 1);
-            boughtList.push(theItem);
+     }
+
+    function foundItemsDirective() {
+        var ddo = {
+            templateUrl: 'foundItems.html',
+            scope: {
+                items: '<',
+                onRemove: '&'
+            },
+            controller: ShoppingListDirectiveController,
+            controllerAs: 'list',
+            bindToController: true
         };
 
+        return ddo;
+    }
+
+    //TODO: do we areally need this?
+    function ShoppingListDirectiveController() {
+        var list = this;
     }
 
 })();
