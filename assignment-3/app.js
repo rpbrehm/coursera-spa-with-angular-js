@@ -10,14 +10,16 @@
     function NarrowItDownController(MenuSearchService) {
         var narrowItDown = this;
 
+        var found = [];
+
         narrowItDown.searchItems = function(itemToSearch) {
-            var promise = MenuSearchService.getMenuItems();
-            promise.then(function (response) {
-                console.log(response.data);
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
+            MenuSearchService.getMenuItems()
+                .then(function (response) {
+                    found = response.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
         };
 
         narrowItDown.removeItem = function (itemIndex) {
@@ -26,15 +28,18 @@
             this.title = origTitle + " (" + list.items.length + " items )";
         };
 
+        narrowItDown.getItems = function() {
+            $scope.items = items;
+        }
     }
 
-    NarrowItDownController.$inject = ['$http'];
+    MenuSearchService.$inject = ['$http'];
     function MenuSearchService($http) {
 
         var service = this;
         var menuItemsURL = "https://davids-restaurant.herokuapp.com/menu_items.json";
 
-        service.getMenuItems = function () {
+        service.getMatchedMenuItems = function (searchTerm) {
             var response = $http({
                 method: "GET",
                 url: (menuItemsURL)
@@ -48,20 +53,11 @@
         var ddo = {
             templateUrl: 'foundItems.html',
             scope: {
-                items: '<',
-                onRemove: '&'
-            },
-            controller: ShoppingListDirectiveController,
-            controllerAs: 'list',
-            bindToController: true
+                foundItems: '=found-items'
+            }
         };
 
         return ddo;
-    }
-
-    //TODO: do we areally need this?
-    function ShoppingListDirectiveController() {
-        var list = this;
     }
 
 })();
