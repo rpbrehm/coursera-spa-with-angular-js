@@ -20,7 +20,7 @@
           <button class="btn btn-primary" ng-click="narrowItDown.searchItems()">Narrow It Down For Me!</button>
         </div>
 
-        <found-items found-items="narrowItDown.found"></found-items>
+        <found-items found-items="narrowItDown.found" on-remove="narrowItDown.removeItem(index)"></found-items>
 
     </div>
 
