@@ -19,17 +19,17 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     templateUrl: 'src/menuapp/templates/home.template.html'
   })
 
-  // Premade list page
-  // .state('mainList', {
-  //   url: '/main-list',
-  //   templateUrl: 'src/manuapp/templates/categories.template.html',
-  //   controller: 'MainShoppingListController as mainList',
-  //   resolve: {
-  //     items: ['ShoppingListService', function (ShoppingListService) {
-  //       return ShoppingListService.getItems();
-  //     }]
-  //   }
-  // });
+  //Premade list page
+  .state('mainList', {
+    url: '/main-list',
+    templateUrl: 'src/menuapp/templates/categories.template.html',
+    controller: 'CategoriesController as categoriesList',
+    resolve: {
+      items: ['ShoppingListService', function (ShoppingListService) {
+        return ShoppingListService.getItems();
+      }]
+    }
+  });
 }
 
 })();
