@@ -22,13 +22,13 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
   //Premade list page
   .state('mainList', {
     url: '/main-list',
-    templateUrl: 'src/menuapp/templates/categories.template.html',
-    controller: 'CategoriesController as categoriesList',
-    resolve: {
-      items: ['ShoppingListService', function (ShoppingListService) {
-        return ShoppingListService.getItems();
-      }]
-    }
+    templateUrl: 'src/menuapp/templates/category-list.template.html',
+    controller: 'CategoriesController as categoriesList'
+    // resolve: {
+    //   items: ['ShoppingListService', function (ShoppingListService) {
+    //     return ShoppingListService.getItems();
+    //   }]
+    // }
   });
 }
 

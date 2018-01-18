@@ -3,7 +3,7 @@
 
     angular.module('Categories')
         .component('categories', {
-            templateUrl: 'src/categories/categoriesDisplay.template.html',
+            templateUrl: 'src/category-list/categoriesDisplay.template.html',
             bindings: {
                 categories: '<'
             }
