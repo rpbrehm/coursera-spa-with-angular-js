@@ -7,8 +7,7 @@
 
     // categoriesController.$inject = ['category-list'];
     function categoriesController() {
-        // var mainList = this;
-        // mainList.items = items;
+
     }
 
 })();
