@@ -27,6 +27,18 @@ function MenuService($http, ApiPath) {
     });
   };
 
+  service.validateShortName = function (shortName) {
+    var config = {};
+
+    $http.get(ApiPath ,'/menu_items/', shortName.toUpperCase(), '.json').join('')
+      .then(function (response) {
+        return response.data;
+      })
+      .catch(function(error) {
+        return null;
+      })
+  };
+
 }
 
 
