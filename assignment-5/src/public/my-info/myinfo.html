@@ -1,22 +1,14 @@
-<div name='signUpForm' class='text-center'>
 
-    <label>First Name</label><span ng-if='(signUpForm.firstName.$error.required && signUpForm.firstName.$touched) || signUpForm.submit.$touched' class='errorMessage'>First Name is required</span><br>
-    <input type='text' class="NameField" name='firstName' ng-model='signupCtrl.user.firstName' placeholder='Enter first name here' required/><br>
+<h1  class='text-center'>
 
-    <label>Last Name</label><span ng-if='signUpForm.lastName.$error.required && signUpForm.lastName.$touched' class='errorMessage'>Last Name is required</span><br>
-    <input type='text' class="NameField" name='lastName' ng-model='signupCtrl.user.lastName' placeholder='Enter last name here' required/><br>
+    <h1 class="NameField">{{myInfo.firstName}}</h1><br>
 
-    <label>Email</label><span ng-if='signUpForm.email.$error.required && signUpForm.email.$touched' class='errorMessage'>Email is required</span><br>
-    <input type='email' class="EmailField" name='email' ng-model='signupCtrl.user.email' placeholder='Enter email id here' required/><br>
+    <h1 class="NameField">{{myInfo.lastName}}</h1><br>
 
-    <label>Mobile</label><br>
-    <input type='text' class="MobileField" placeholder='Enter your contact number here' ng-model='signupCtrl.user.mobile'/><br>
+    <h1 class="EmailField" ng-model='signupCtrl.user.email' placeholder='Enter email id here' required/></h1><br>
 
-    <label>Favorite Dish</label><span ng-if='signUpForm.favoriteDish.$error.required && signUpForm.favoriteDish.$touched' class='errorMessage'>Please mention your favorite dish</span><br>
-    <input type='text' name='favoriteDish' class="DishField" ng-model="signupCtrl.user.favDish" placeholder='Enter your favorite dish here' required></input><br>
-    <br>
-    <a ui-sref="public.submit({favDish: signupCtrl.user.favDish})">
-        <button name='submit' type='submit' class='submit' ng-disabled="signUpForm.$invalid">Submit</button>
-    </a>
+    <h1 class="MobileField" ng-model='signupCtrl.user.mobile'/></h1><br>
+
+    <h1  class="DishField" ng-model="signupCtrl.user.favDish" ></h1><br>
 
 </div>
