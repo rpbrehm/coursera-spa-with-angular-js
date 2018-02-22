@@ -7,7 +7,7 @@ angular.module('public')
     SignupController.$inject = ['MenuService', 'MyinfoService', 'ApiPath'];
     function SignupController(MenuService, MyinfoService, ApiPath) {
         var signupCtrl = this;
-        signupCtrl.userInfo = MyinfoService.getUserInfo();
+        signupCtrl.myInfo = MyinfoService.getMyInfo();
 
         signupCtrl.submit = function () {
             MenuService.validateShortName(signupCtrl.userInfo.favmenuitem);

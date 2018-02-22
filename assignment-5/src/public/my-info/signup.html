@@ -11,8 +11,8 @@
 	<label>Email</label><span ng-if='signUpForm.email.$error.required && signUpForm.email.$touched' class='errorMessage'>Email is required</span><br>
 	<input type='email' class="EmailField" name='email' ng-model='signupCtrl.user.email' placeholder='Enter email id here' required/><br>
 
-	<label>Mobile</label><br>
-	<input type='text' class="MobileField" placeholder='Enter your contact number here' ng-model='signupCtrl.user.mobile'/><br>
+	<label>Phone</label><br>
+	<input type='text' class="PhoneField" placeholder='Enter your phone number here' ng-model='signupCtrl.user.mobile'/><br>
 
 	<label>Favorite Dish</label><span ng-if='signUpForm.favoriteDish.$error.required && signUpForm.favoriteDish.$touched' class='errorMessage'>Please mention your favorite dish</span><br>
 	<input type='text' name='favoriteDish' class="DishField" ng-model="signupCtrl.user.favDish" placeholder='Enter your favorite dish here' required></input><br>
