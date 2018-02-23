@@ -1,23 +1,45 @@
-<h2 class="text-center">Sign up for our newsletter!</h2>
+<div class="container">
+	<h2 class="text-center">Sign up Form</h2>
 
-<form name='signUpForm' class='text-center' novalidate ng-cloak>
+	<div class="col-sm-12">
+		<fieldset>
+			<form name='signUpForm' class='text-center' novalidate style="width: 50%;margin-right: auto;margin-left: auto;">
 
-	<label>First Name</label><span ng-if='(signUpForm.firstName.$error.required && signUpForm.firstName.$touched) || signUpForm.submit.$touched' class='errorMessage'>First Name is required</span><br>
-	<input type='text' class="NameField" name='firstName' ng-model='signupCtrl.user.firstName' placeholder='Enter first name here' required/><br>
+				<div class="form-group">
+					<label class="control-label" for="firstName">First Name</label>
+					<input class="form-control" type='text' id="firstName" name='firstName' ng-model='signupCtrl.user.firstName' placeholder='Enter first name here' required ng-pattern="signupCtrl.alphabetPattern"/>
+					<span ng-if="signUpForm.firstName.$touched && (signUpForm.firstName.$error.required || signUpForm.firstName.$error.pattern)">First Name is required </span><br>
+				</div>
 
-	<label>Last Name</label><span ng-if='signUpForm.lastName.$error.required && signUpForm.lastName.$touched' class='errorMessage'>Last Name is required</span><br>
-	<input type='text' class="NameField" name='lastName' ng-model='signupCtrl.user.lastName' placeholder='Enter last name here' required/><br>
+				<div class="form-group">
+					<label class="control-label" for="lasttName">Last Name</label>
+					<input class="form-control" type='text' id="lasttName" name='lasttName' ng-model='signupCtrl.user.lastName' placeholder='Enter last name here' required ng-pattern="signupCtrl.alphabetPattern"/>
+					<span ng-if="signUpForm.lasttName.$touched && (signUpForm.lasttName.$error.required || signUpForm.lasttName.$error.pattern)">Last Name is required </span><br>
+				</div>
 
-	<label>Email</label><span ng-if='signUpForm.email.$error.required && signUpForm.email.$touched' class='errorMessage'>Email is required</span><br>
-	<input type='email' class="EmailField" name='email' ng-model='signupCtrl.user.email' placeholder='Enter email id here' required/><br>
+				<div class="form-group">
+					<label class="control-label" for="email">Email</label>
+					<input class="form-control" type='text' id="email" name='email' ng-model='signupCtrl.user.email' placeholder='Enter email here' required ng-pattern="signupCtrl.emailPattern"/>
+					<span ng-if="signUpForm.email.$touched && (signUpForm.email.$error.required || signUpForm.email.$error.pattern)">Email is required </span><br>
+				</div>
 
-	<label>Phone</label><br>
-	<input type='text' class="PhoneField" placeholder='Enter your phone number here' ng-model='signupCtrl.user.mobile'/><br>
+				<div class="form-group">
+					<label class="control-label" for="phone">Phone</label>
+					<input class="form-control" type='text' id="phone" name='phone' ng-model='signupCtrl.user.phone' placeholder='Enter phone here' required ng-pattern="signupCtrl.phonePattern"/>
+					<span ng-if="signUpForm.phone.$touched && (signUpForm.phone.$error.required || signUpForm.phone.$error.pattern)">Phone is required </span><br>
+				</div>
 
-	<label>Favorite Dish</label><span ng-if='signUpForm.favoriteDish.$error.required && signUpForm.favoriteDish.$touched' class='errorMessage'>Please mention your favorite dish</span><br>
-	<input type='text' name='favoriteDish' class="DishField" ng-model="signupCtrl.user.favDish" placeholder='Enter your favorite dish here' required></input><br>
-	<br>
-	<a ui-sref="public.submit({favDish: signupCtrl.user.favDish})">
-	<button name='submit' type='submit' class='submit' ng-disabled="signUpForm.$invalid">Submit</button>
-	</a>
-</form>
+				<div class="form-group">
+					<label class="control-label" for="menuShort">Favorite Dish</label>
+					<input class="form-control" id="menuShort" name="menuShort" type="text" value="" ng-model="signupCtrl.user.menuShort" placeholder="Dish (Short Name)">
+				</div>
+
+				<div class="form-group" style="height: 35px;">
+					<div style="float: right;">
+						<button class="btn btn-primary" ng-disabled="signupform.$invalid" ng-click="signupCtrl.formSubmit()">Submit</button>
+					</div>
+				</div>
+			</form>
+		</fieldset>
+	</div>
+</div>

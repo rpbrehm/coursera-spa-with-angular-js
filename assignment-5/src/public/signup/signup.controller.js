@@ -6,30 +6,24 @@ angular.module('public')
 
     SignupController.$inject = ['MenuService', 'MyinfoService', 'ApiPath'];
     function SignupController(MenuService, MyinfoService, ApiPath) {
-        var signupCtrl = this;
-        signupCtrl.myInfo = MyinfoService.getMyInfo();
 
-        signupCtrl.submit = function () {
-            MenuService.validateShortName(signupCtrl.userInfo.favmenuitem);
+        var signupCtrl = this;
+        signupCtrl.error = false;
+        signupCtrl.user = {};
+        signupCtrl.show = true;
+        signupCtrl.emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        signupCtrl.phonePattern = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+        signupCtrl.alphabetPattern = /^[a-zA-Z ]*$/;
+
+        signupCtrl.formSubmit = function () {
+            var result = MenuService.validateShortName(signupCtrl.user.menuShort);
             if (signupCtrl.StatusValid()) {
-                MyinfoService.pushUserInfo(signupCtrl.userInfo);
+                MyinfoService.pushUserInfo(signupCtrl.user);
             }
         };
 
-        signupCtrl.StatusValid = function () {
-            return MyinfoService.getInfoStatus() == "Valid";
-        };
-
-        signupCtrl.StatusInvalid = function () {
-            return MyinfoService.getInfoStatus() == "Invalid";
-        };
-
-        signupCtrl.hasData = function () {
-            return MyinfoService.hasItemData();
-        };
-
         signupCtrl.favoriteItemImage = function () {
-            var imgPath = `${ApiPath}/images/${signupCtrl.userInfo.ItemData.short_name}.jpg`;
+            var imgPath = '${ApiPath}/images/${signupCtrl.userInfo.ItemData.short_name}.jpg';
             return imgPath;
         }
     }

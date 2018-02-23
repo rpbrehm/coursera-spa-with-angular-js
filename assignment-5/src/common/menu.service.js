@@ -28,13 +28,12 @@ function MenuService($http, ApiPath) {
   };
 
   service.validateShortName = function (shortName) {
-    var config = {};
-
-    $http.get(ApiPath ,'/menu_items/', shortName.toUpperCase(), '.json').join('')
+    var temp = [ApiPath ,'/menu_items/', shortName.toUpperCase(), '.json'].join('');
+    $http.get([ApiPath ,'/menu_items/', shortName.toUpperCase(), '.json'].join(''))
       .then(function (response) {
         return response.data;
       })
-      .catch(function(error) {
+      .catch(function() {
         return null;
       })
   };
