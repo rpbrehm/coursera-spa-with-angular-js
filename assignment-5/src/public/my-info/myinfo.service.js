@@ -4,7 +4,7 @@
 angular.module('public')
     .service('MyinfoService', MyinfoService);
 
-    MyinfoService.injectg = ['$http', 'MenuService'];
+    MyinfoService.$inject = ['$http', 'MenuService'];
 
     function MyinfoService($http, MenuService) {
         var myinfoService = this;
