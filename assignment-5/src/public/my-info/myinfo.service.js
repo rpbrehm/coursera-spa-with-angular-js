@@ -8,20 +8,15 @@ angular.module('public')
 
     function MyinfoService($http, MenuService) {
         var myinfoService = this;
-        var myInfo = {};
-
-        myInfo.firstName = "";
-        myInfo.lastName = "";
-        myInfo.email = "";
-        myInfo.phone = "";
-        myInfo.favoriteDish = "";
-
-        myinfoService.myInfo = myInfo;
+        var myInfo;
 
         myinfoService.getMyInfo = function(){
-            return myinfoService.myInfo;
+            return myInfo;
         };
 
+        myinfoService.pushMyInfo = function(userInfo) {
+            myInfo = userInfo;
+        }
     }
     
 })();

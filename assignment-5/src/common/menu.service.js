@@ -28,8 +28,7 @@ function MenuService($http, ApiPath) {
   };
 
   service.validateShortName = function (shortName) {
-    var temp = [ApiPath ,'/menu_items/', shortName.toUpperCase(), '.json'].join('');
-    $http.get([ApiPath ,'/menu_items/', shortName.toUpperCase(), '.json'].join(''))
+    return $http.get([ApiPath ,'/menu_items/', shortName.toUpperCase(), '.json'].join(''))
       .then(function (response) {
         return response.data;
       })

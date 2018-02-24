@@ -9,17 +9,18 @@ angular.module('public')
 
         var signupCtrl = this;
         signupCtrl.error = false;
-        signupCtrl.user = {};
+        signupCtrl.userInfo = {};
         signupCtrl.show = true;
         signupCtrl.emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         signupCtrl.phonePattern = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
         signupCtrl.alphabetPattern = /^[a-zA-Z ]*$/;
 
         signupCtrl.formSubmit = function () {
-            var result = MenuService.validateShortName(signupCtrl.user.menuShort);
-            if (signupCtrl.StatusValid()) {
-                MyinfoService.pushUserInfo(signupCtrl.user);
-            }
+            MenuService.validateShortName(signupCtrl.userInfo.menuShort)
+            .then(function(result) {
+                signupCtrl.userInfo.favoriteDish = result;
+                MyinfoService.pushMyInfo(signupCtrl.userInfo);
+            });
         };
 
         signupCtrl.favoriteItemImage = function () {

@@ -1,25 +1,25 @@
 
-<div class='text-center'>
+<div class='text-center' style="width: 50%;margin-right: auto;margin-left: auto;">
 
     <div class="row" ng-if="!myinfoCtrl.isSignedUp">
        Sign up Now!
     </div>
 
     <div ng-if="myinfoCtrl.isSignedUp">
-        <label>First Name</label><br>
-        <h4 class="NameField">{{myinfoCtrl.myInfo.firstName}}</h4><br>
+        <label class="control-label" for="firstName">First Name</label>
+        <h4  id="firstName" class="form-control">{{myinfoCtrl.myInfo.firstName}}</h4><br/>
 
-        <label>Last Name</label><br>
-        <h4 class="NameField">{{myinfoCtrl.myInfo.lastName}}</h4><br>
+        <label class="control-label" for="lasttName">Last Name</label>
+        <h4 id="lasttName" class="form-control">{{myinfoCtrl.myInfo.lastName}}</h4><br/>
 
-        <label>Email</label><br>
-        <h4 class="EmailField">{{myinfoCtrl.myInfo.email}}</h4><br>
+        <label class="control-label" for="email">Email</label>
+        <h4 id="email" class="form-control">{{myinfoCtrl.myInfo.email}}</h4><br/>
 
-        <label>Phone</label><br>
-        <h4 class="MobileField"/>{{myinfoCtrl.myInfo.phone}}</h4><br>
+        <label class="control-label" for="phone">Phone</label>
+        <h4 id="phone" class="form-control">{{myinfoCtrl.myInfo.phone}}</h4><br/>
 
-        <label>Favorite Dish</label><br>
-        <h4 class="DishField"></h4><br>
+        <label class="control-label" for="favoriteDish">Favorite Dish</label>
+        <h4 id="favoriteDish" class="form-control"></h4><br>
     </div>
 
 </div>

@@ -7,31 +7,31 @@
 
 				<div class="form-group">
 					<label class="control-label" for="firstName">First Name</label>
-					<input class="form-control" type='text' id="firstName" name='firstName' ng-model='signupCtrl.user.firstName' placeholder='Enter first name here' required ng-pattern="signupCtrl.alphabetPattern"/>
+					<input class="form-control" type='text' id="firstName" name='firstName' ng-model='signupCtrl.userInfo.firstName' placeholder='Enter first name here' required ng-pattern="signupCtrl.alphabetPattern"/>
 					<span ng-if="signUpForm.firstName.$touched && (signUpForm.firstName.$error.required || signUpForm.firstName.$error.pattern)">First Name is required </span><br>
 				</div>
 
 				<div class="form-group">
 					<label class="control-label" for="lasttName">Last Name</label>
-					<input class="form-control" type='text' id="lasttName" name='lasttName' ng-model='signupCtrl.user.lastName' placeholder='Enter last name here' required ng-pattern="signupCtrl.alphabetPattern"/>
+					<input class="form-control" type='text' id="lasttName" name='lasttName' ng-model='signupCtrl.userInfo.lastName' placeholder='Enter last name here' required ng-pattern="signupCtrl.alphabetPattern"/>
 					<span ng-if="signUpForm.lasttName.$touched && (signUpForm.lasttName.$error.required || signUpForm.lasttName.$error.pattern)">Last Name is required </span><br>
 				</div>
 
 				<div class="form-group">
 					<label class="control-label" for="email">Email</label>
-					<input class="form-control" type='text' id="email" name='email' ng-model='signupCtrl.user.email' placeholder='Enter email here' required ng-pattern="signupCtrl.emailPattern"/>
+					<input class="form-control" type='text' id="email" name='email' ng-model='signupCtrl.userInfo.email' placeholder='Enter email here' required ng-pattern="signupCtrl.emailPattern"/>
 					<span ng-if="signUpForm.email.$touched && (signUpForm.email.$error.required || signUpForm.email.$error.pattern)">Email is required </span><br>
 				</div>
 
 				<div class="form-group">
 					<label class="control-label" for="phone">Phone</label>
-					<input class="form-control" type='text' id="phone" name='phone' ng-model='signupCtrl.user.phone' placeholder='Enter phone here' required ng-pattern="signupCtrl.phonePattern"/>
+					<input class="form-control" type='text' id="phone" name='phone' ng-model='signupCtrl.userInfo.phone' placeholder='Enter phone here' required ng-pattern="signupCtrl.phonePattern"/>
 					<span ng-if="signUpForm.phone.$touched && (signUpForm.phone.$error.required || signUpForm.phone.$error.pattern)">Phone is required </span><br>
 				</div>
 
 				<div class="form-group">
 					<label class="control-label" for="menuShort">Favorite Dish</label>
-					<input class="form-control" id="menuShort" name="menuShort" type="text" value="" ng-model="signupCtrl.user.menuShort" placeholder="Dish (Short Name)">
+					<input class="form-control" id="menuShort" name="menuShort" type="text" value="" ng-model="signupCtrl.userInfo.menuShort" placeholder="Dish (Short Name)">
 				</div>
 
 				<div class="form-group" style="height: 35px;">
