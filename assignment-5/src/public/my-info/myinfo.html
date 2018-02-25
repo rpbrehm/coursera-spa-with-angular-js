@@ -2,7 +2,7 @@
 <div class='text-center' style="width: 50%;margin-right: auto;margin-left: auto;">
 
     <div class="row" ng-if="!myinfoCtrl.isSignedUp">
-       Sign up Now!
+        <strong>Signup now!<br>Please Visit <a ui-sref="public.signup">Sign Up</a></strong>.
     </div>
 
     <div ng-if="myinfoCtrl.isSignedUp">
@@ -19,7 +19,13 @@
         <h4 id="phone" class="form-control">{{myinfoCtrl.myInfo.phone}}</h4><br/>
 
         <label class="control-label" for="favoriteDish">Favorite Dish</label>
-        <h4 id="favoriteDish" class="form-control"></h4><br>
+        <h4 ng-if="!myinfoCtrl.myInfo.menuShort" id="favoriteDish" class="form-control">No Favorite Picked</h4><br/>
+        <div ng-if="myinfoCtrl.myInfo.menuShort">
+            <h4 class="form-control">Name : {{myinfoCtrl.myInfo.menuShort | uppercase}} - {{myinfoCtrl.myInfo.favoriteDish.name}}</h4>
+            <h4>Description : {{myinfoCtrl.myInfo.favoriteDish.description}}</h4>
+            <img width="250" height="150" ng-src="{{myinfoCtrl.myInfo.favoriteItemImage}}"
+                 alt="{{myinfoCtrl.myInfo.favoriteDish.name}}">
+        </div>
     </div>
 
 </div>

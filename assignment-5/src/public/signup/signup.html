@@ -39,7 +39,14 @@
 						<button class="btn btn-primary" ng-disabled="signupform.$invalid" ng-click="signupCtrl.formSubmit()">Submit</button>
 					</div>
 				</div>
+				<div class="alert alert-dismissible alert-success" ng-if="signupCtrl.signupSucccess">
+					<strong>Signup successful!<br>Please Visit <a ui-sref="public.myinfo">My Info</a></strong>.
+				</div>
+				<div class="alert alert-dismissible alert-success" ng-if="signupCtrl.error">
+					<strong>{{signupCtrl.errorMessage}}</strong>
+				</div>
 			</form>
 		</fieldset>
 	</div>
 </div>
+
